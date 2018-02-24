@@ -30,9 +30,9 @@ public class AlreadyLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        request.getRequestDispatcher("SouqHeader.html").include(request, response);
-        request.getRequestDispatcher("AlreadyLogin.html").include(request, response);
-        request.getRequestDispatcher("SouqFooter.html").include(request, response);
+        request.getRequestDispatcher("/SouqHeader.html").include(request, response);
+        request.getRequestDispatcher("/AlreadyLogin.html").include(request, response);
+        request.getRequestDispatcher("/SouqFooter.html").include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

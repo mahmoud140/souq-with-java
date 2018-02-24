@@ -35,9 +35,9 @@ public class CheckCookiesEnabled extends HttpServlet {
             Cookie cookie = cookies[0];
 //            if ((cookie.getName().equalsIgnoreCase("check")) && cookie.getValue().equalsIgnoreCase("true")) {
                 response.getWriter().println("cookie is enable");
-                String uname = request.getParameter("name");
-                String pass = request.getParameter("password");
-                response.sendRedirect("Login.jsp?name=" + uname + "&password=" + pass);
+                String uname = request.getParameter("UserName");
+                String pass = request.getParameter("Password");
+                response.sendRedirect("Login.jsp?UserName=" + uname + "&Password=" + pass);
 //            }
         } else {
             response.getWriter().println("cookie is disabled");

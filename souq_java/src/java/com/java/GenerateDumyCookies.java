@@ -34,7 +34,9 @@ public class GenerateDumyCookies extends HttpServlet {
         Cookie isLogin = new Cookie("NotLogin", "true");
 //        response.addCookie(dumy);
         response.addCookie(isLogin);
-        response.sendRedirect("CheckCookiesEnabled");
+        String uname = request.getParameter("UserName");
+        String pass = request.getParameter("Password");
+        response.sendRedirect("CheckCookiesEnabled?UserName=" + uname + "&Password=" + pass);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

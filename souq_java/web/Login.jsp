@@ -4,24 +4,22 @@
     Author     : Mahmoud
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="SouqHeader.html"></jsp:include>
-<jsp:include page="login.html"></jsp:include>
-<jsp:include page="SouqFooter.html"></jsp:include>
+<%@page session="false" contentType="text/html" pageEncoding="UTF-8"%>
 <%!
     Vector<String> players_name = new Vector<String>();
     Vector<String> players_password = new Vector<String>();
     boolean vaild = true;
 %>
 <%
-    String uname = request.getParameter("name");
-    String pass = request.getParameter("password");
+    String uname = request.getParameter("UserName");
+    String pass = request.getParameter("Password");
     Connection conn = (Connection) application.getAttribute("conn");
-    String query = "select uname,password from users";
+    String query = "select uname from users";
     Statement stmt = conn.createStatement();
     ResultSet rs = stmt.executeQuery(query);
     while (rs.next()) {
@@ -34,17 +32,23 @@
         }
     }
     if (!vaild) {
-        query="select password,uprivilage from users where uname="+uname;
-         rs = stmt.executeQuery(query);
-         String password=rs.getString(1);
-         String uprivilage=rs.getString(2);
+        query="select password,uprivilage from users where uname = ?";
+        PreparedStatement stm=conn.prepareStatement(query);
+        stm.setString(1, uname);
+        ResultSet rs2 = stm.executeQuery();
+        System.out.println(rs2.next());
+         String password=rs2.getString("password");
+         String uprivilage=rs2.getString("uprivilage");
          if(password.equalsIgnoreCase(pass)){
              if(uprivilage.equalsIgnoreCase("admin"))
              {
-                 response.sendRedirect("MainForAdmin");
+//                 response.getWriter().println("admin");
+                 request.getSession(true);
+                 response.sendRedirect("MainForAdmin.html");
              }
              else{
-             response.sendRedirect("MainForUser.html");
+                 request.getSession(true);
+                 response.sendRedirect("MainForUser.html");
              }
          }
     } else {
