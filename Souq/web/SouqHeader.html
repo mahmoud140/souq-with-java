@@ -12,15 +12,16 @@ and open the template in the editor.
     </head>
     <body>  
   <style>
+      
       input[type=text] {
     width: 130px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
+    border: 5px solid #red;
+    border-radius: 6px;
     font-size: 16px;
     background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
+    background-image: url('seaech.png');
+    background-position: 30px 30px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
@@ -37,12 +38,13 @@ input[type=text]:focus {
   text-align: center;
   padding: 20px 30px;
   text-decoration: aqua;
-  font-size: 30px; 
+  font-size: 25px;  
+  border: teal;
 } 
 a:hover {
   color: brown;
 } 
-tr
+#tr2
 {
     background: aliceblue;
 }
@@ -64,7 +66,7 @@ tr
                position:absolute;
                padding-left:20%;
                padding-right: 10%;
-               align-content:left; 
+               align-content:center; 
                width: 20%
                
                
@@ -72,16 +74,18 @@ tr
             
         </style>
         <table width="100%">
-            <tr>
-                <td> <img  id="1" src="souq1.png" alt="logo"  width="200" height="100"> </td>
-                <td><a id="2" >All Categories</a></td>
-                <td><a href=""><img  id="3" src="cart.png" alt="cart" height="70" width="100"></a> </td>
+            
+            <tr id="tr2">
+            <td width="5" height="3"> <img  id="1" src="souq1.png" alt="logo"  width="100" height="100"> </td>
+                <td ><a id="2" href="" >All Categories</a></td>
+                <td width="1" height="1"><a href=""><img  id="3" src="cart.png" alt="cart" height="50" width="100"></a> </td>
               
                 <td>
                     <form  id="5" action="">
                         <input type="text" placeholder="Search to your product" name="search">
-                     <!--   <input type="submit" value="search"><i class="fa fa-search"></i>-->
-                    </form>  </td>
+                       <!-- <input type="submit" value=""><i class="fa fa-search"></i>-->
+                    </form>
+                </td>
                 <td><a id="6">Profile</a></td>
                 <td><a id="7">Logout</a></td>
             </tr>
