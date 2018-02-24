@@ -37,7 +37,7 @@ public class CheckCookiesEnabled extends HttpServlet {
                 response.getWriter().println("cookie is enable");
                 String uname = request.getParameter("name");
                 String pass = request.getParameter("password");
-                response.sendRedirect("login?name=" + uname + "&password=" + pass);
+                response.sendRedirect("Login.jsp?name=" + uname + "&password=" + pass);
 //            }
         } else {
             response.getWriter().println("cookie is disabled");

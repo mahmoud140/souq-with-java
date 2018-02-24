@@ -6,7 +6,7 @@
     </filter>
     <filter-mapping>
         <filter-name>NotLoginFilter</filter-name>
-        <url-pattern>/NotLogin/*</url-pattern>
+        <url-pattern>/(L|R)*</url-pattern>
     </filter-mapping>
     <listener>
         <description>ServletContextListener, HttpSessionListener</description>
@@ -24,17 +24,25 @@
         <servlet-name>CheckCookiesEnabled</servlet-name>
         <servlet-class>com.java.CheckCookiesEnabled</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlreadyLogin</servlet-name>
+        <servlet-class>com.java.AlreadyLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GenerateDumyCookies</servlet-name>
         <url-pattern>/GenerateDumyCookies</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
-        <url-pattern>/NotLogin/Login</url-pattern>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckCookiesEnabled</servlet-name>
         <url-pattern>/CheckCookiesEnabled</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlreadyLogin</servlet-name>
+        <url-pattern>/AlreadyLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

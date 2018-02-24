@@ -18,6 +18,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,20 +28,19 @@ public class NotLoginFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        
+
     }
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        Cookie[] cookies=request.getCookies();
-        Cookie cookie = cookies[0];
-        if((cookie.getName().equalsIgnoreCase("NotLogin")) && cookie.getValue().equalsIgnoreCase("true"))
-       {
-           response.sendRedirect("Login.html");
-       }
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("Login.jsp");
+        } else {
+                chain.doFilter(req, res);
+            }
+        }
+
     }
-    
-    
-}
