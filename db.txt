@@ -1,0 +1,7 @@
+create database iti_souq;
+\c iti_souq;
+create table users(user_id serial,user_name text,user_password text,user_privilege text,user_budget int,address text,birth_date date,job text,email text,primary key(user_id));
+create table items(item_id serial,item_name text,item_price int,item_category text,avilable_amount int,photo_url text,description text,primary key(item_id));
+create table transactions(trans_id serial,user_id int,item_id int,trans_state text,trans_date date,primary key(trans_id));
+alter table transactions add CONSTRAINT fk_1 FOREIGN KEY (user_id)  REFERENCES users (user_id);
+alter table transactions add CONSTRAINT fk_2 FOREIGN KEY (item_id)  REFERENCES items (item_id);
