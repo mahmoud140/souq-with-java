@@ -4,6 +4,7 @@
     Author     : Mahmoud
 --%>
 
+<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.sql.ResultSet"%>
@@ -14,12 +15,14 @@
     Vector<String> players_name = new Vector<String>();
     Vector<String> players_password = new Vector<String>();
     boolean vaild = true;
+  
 %>
 <%
     String uname = request.getParameter("UserName");
     String pass = request.getParameter("Password");
-    Connection conn = (Connection) application.getAttribute("conn");
-    String query = "select uname from users";
+    Connection conn = (Connection) request.getServletContext().getAttribute("conn");
+    
+    String query = "select user_name from users";
     Statement stmt = conn.createStatement();
     ResultSet rs = stmt.executeQuery(query);
     while (rs.next()) {
@@ -32,13 +35,13 @@
         }
     }
     if (!vaild) {
-        query="select password,uprivilage from users where uname = ?";
+        query="select user_password,user_privilege from users where user_name = ?";
         PreparedStatement stm=conn.prepareStatement(query);
         stm.setString(1, uname);
         ResultSet rs2 = stm.executeQuery();
         System.out.println(rs2.next());
-         String password=rs2.getString("password");
-         String uprivilage=rs2.getString("uprivilage");
+         String password=rs2.getString("user_password");
+         String uprivilage=rs2.getString("user_privilege");
          if(password.equalsIgnoreCase(pass)){
              if(uprivilage.equalsIgnoreCase("admin"))
              {
@@ -48,7 +51,7 @@
              }
              else{
                  request.getSession(true);
-                 response.sendRedirect("MainForUser.html");
+                 response.sendRedirect("MainForUser");
              }
          }
     } else {
