@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "MainForUser", urlPatterns = {"/MainForUser"})
-public class MainForUser extends HttpServlet {
+@WebServlet(name = "AddToCartServlet", urlPatterns = {"/AddToCartServlet"})
+public class AddToCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,22 +31,19 @@ public class MainForUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         PrintWriter pt = response.getWriter();
-         System.out.println(request.getSession(false).getAttribute("user_id"));
-        request.getRequestDispatcher("SouqHeader.html").include(request, response);
-        pt.println("<html>\n"
-                + "<body>\n"
-                + "    <br><br>\n"
-                + "    <table width=\"100%\">\n"
-                + "    <tr>\n"
-                + "      <td  align=\"center\"><a href=\" MobilesServlet\"><img src=\"mobile-phones.jpg\" width=\"50%\"/><br><h3>mobiles</h3> </a></td>\n"
-                + "      <td  align=\"center\"><a href=\"labtopsServlet\"><img src=\"laptops.jpg\"width=\"50%\" /><br><h3>labtops</h3> </a></td>\n"
-                + "    </tr>\n"
-                + "    </table>\n"
-                + "</body>\n"
-                + "\n"
-                + "</html>");
-        request.getRequestDispatcher("SouqFooter.html").include(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AddToCartServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AddToCartServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

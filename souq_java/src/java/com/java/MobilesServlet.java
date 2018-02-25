@@ -44,6 +44,7 @@ public class MobilesServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter pt = response.getWriter();
+        int i=0;
         conn = (Connection) request.getServletContext().getAttribute("conn");
        
 
@@ -52,22 +53,21 @@ public class MobilesServlet extends HttpServlet {
             rs = pst.executeQuery();
             request.getRequestDispatcher("SouqHeader.html").include(request, response);
             pt.println("<div align=\"center\">\n"
-                + "   <form method=\"get\" action=\"MainForUser\">");
+                + "   <table>");
             while (rs.next()) {
-                pt.println(" <img height=\"100px\"src=\"" + rs.getString(6) + "\"/>\n"
+                if(i==0){pt.println("<tr>");}
+                i++;
+                pt.println("<td item-width=\"100px\"><div align=\"center\">\n"
+                        +"<form method=\"get\" action=\"AddToCartServlet\" > "
+                        + "<img width=\"100px\" height=\"100px\" src=\"" + rs.getString(6) + "\"/>\n"
                         + "    <br>\n"
-                        + "    <h3>" + rs.getString(2) + "</h3>\n" + "<h2>price:"+ rs.getString(3)+"</h2>" 
-                        + "    <br>\n"
-                        + "    <select name=\"" + rs.getString(2) + "\">\n"
-                        + "        <option value=\"0\">0</option>\n"
-                        + "        <option value=\"1\">1</option>\n"
-                        + "        <option value=\"2\">2</option>\n"
-                        + "        <option value=\"3\">3</option>\n"
-                        + "        <option value=\"4\">4</option>\n"
-                        + "        <option value=\"5\">5</option>\n"
-                        + "    </select><br><br>");
+                        + "    <h3>" + rs.getString(2) + "</h3>\n" + "<h2>&nbsp;&nbsp;&nbsp;price:"+ rs.getString(3)+"&nbsp;&nbsp;&nbsp;</h2>" 
+                        + "    <br>\n<input type=\"hidden\" name=\"choosedId\" value=\""+rs.getString(1)+"\">"
+                        + "<input type=\"submit\" value=\"Add to cart\" > </form></div> </td>");
+                if(i==8){i=0;pt.println("</tr>");}
             }
-              pt.println("<input type=\"submit\" value=\"go\" > </form>\n"
+            if(i!=0){pt.println("</tr>");}
+              pt.println("</table>\n"
                     + "  </div>");
         
         request.getRequestDispatcher("SouqFooter.html").include(request, response);

@@ -35,22 +35,23 @@
         }
     }
     if (!vaild) {
-        query="select user_password,user_privilege from users where user_name = ?";
+        query="select user_password,user_privilege,user_id from users where user_name = ?";
         PreparedStatement stm=conn.prepareStatement(query);
         stm.setString(1, uname);
         ResultSet rs2 = stm.executeQuery();
         System.out.println(rs2.next());
          String password=rs2.getString("user_password");
          String uprivilage=rs2.getString("user_privilege");
+         int id=rs2.getInt("user_id");
          if(password.equalsIgnoreCase(pass)){
              if(uprivilage.equalsIgnoreCase("admin"))
              {
 //                 response.getWriter().println("admin");
-                 request.getSession(true);
+                 request.getSession(true).setAttribute("user_id", id);
                  response.sendRedirect("MainForAdmin.html");
              }
              else{
-                 request.getSession(true);
+                 request.getSession(true).setAttribute("user_id", id);;
                  response.sendRedirect("MainForUser");
              }
          }
