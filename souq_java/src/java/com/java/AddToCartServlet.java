@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "AddToCartServlet", urlPatterns = {"/AddToCartServlet"})
+@WebServlet(name = "AddToCartServlet", urlPatterns = {"/notlogin/AddToCartServlet"})
 public class AddToCartServlet extends HttpServlet {
 
     /**

@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "MobilesServlet", urlPatterns = {"/MobilesServlet"})
+@WebServlet(name = "MobilesServlet", urlPatterns = {"/notlogin/MobilesServlet"})
 public class MobilesServlet extends HttpServlet {
      Connection conn;
     PreparedStatement pst;

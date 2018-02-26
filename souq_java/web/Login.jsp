@@ -4,6 +4,7 @@
     Author     : Mahmoud
 --%>
 
+<%@page import="com.java.DBClass"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.Vector"%>
@@ -15,16 +16,17 @@
     Vector<String> players_name = new Vector<String>();
     Vector<String> players_password = new Vector<String>();
     boolean vaild = true;
-  
+    String query;
 %>
 <%
     String uname = request.getParameter("UserName");
     String pass = request.getParameter("Password");
     Connection conn = (Connection) request.getServletContext().getAttribute("conn");
-    
-    String query = "select user_name from users";
-    Statement stmt = conn.createStatement();
-    ResultSet rs = stmt.executeQuery(query);
+    DBClass select =new DBClass( conn);
+    ResultSet rs=select.login(uname, pass);
+//    String query = "select user_name from users";
+//    Statement stmt = conn.createStatement();
+//    ResultSet rs = stmt.executeQuery(query);
     while (rs.next()) {
         players_name.add(rs.getString(1));
     }
@@ -43,10 +45,14 @@
          String password=rs2.getString("user_password");
          String uprivilage=rs2.getString("user_privilege");
          int id=rs2.getInt("user_id");
+                          System.out.println(pass);
+                          System.out.println(password);
          if(password.equalsIgnoreCase(pass)){
+             System.out.println(uprivilage+"2");
              if(uprivilage.equalsIgnoreCase("admin"))
              {
 //                 response.getWriter().println("admin");
+                 System.out.println("admin3");
                  request.getSession(true).setAttribute("user_id", id);
                  response.sendRedirect("MainForAdmin.html");
              }
@@ -54,6 +60,8 @@
                  request.getSession(true).setAttribute("user_id", id);;
                  response.sendRedirect("MainForUser");
              }
+         }else{
+            response.sendRedirect("LoginFail.jsp"); 
          }
     } else {
         response.sendRedirect("LoginFail.jsp");

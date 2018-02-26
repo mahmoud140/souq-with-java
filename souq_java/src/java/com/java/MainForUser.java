@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "MainForUser", urlPatterns = {"/MainForUser"})
+@WebServlet(name = "MainForUser", urlPatterns = {"/notlogin/MainForUser"})
 public class MainForUser extends HttpServlet {
 
     /**

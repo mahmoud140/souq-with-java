@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "labtopsServlet", urlPatterns = {"/labtopsServlet"})
+@WebServlet(name = "labtopsServlet", urlPatterns = {"/notlogin/labtopsServlet"})
 public class labtopsServlet extends HttpServlet {
      Connection conn;
     PreparedStatement pst;
