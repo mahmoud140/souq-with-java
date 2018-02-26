@@ -64,7 +64,7 @@ public class MobilesServlet extends HttpServlet {
                         + "    <h3>" + rs.getString(2) + "</h3>\n" + "<h2>&nbsp;&nbsp;&nbsp;price:"+ rs.getString(3)+"&nbsp;&nbsp;&nbsp;</h2>" 
                         + "    <br>\n<input type=\"hidden\" name=\"choosedId\" value=\""+rs.getString(1)+"\">"
                         + "<input type=\"submit\" value=\"Add to cart\" > </form></div> </td>");
-                if(i==8){i=0;pt.println("</tr>");}
+                if(i==5){i=0;pt.println("</tr>");}
             }
             if(i!=0){pt.println("</tr>");}
               pt.println("</table>\n"
