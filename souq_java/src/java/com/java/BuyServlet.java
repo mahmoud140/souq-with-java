@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "AddToCartServletEnd", urlPatterns = {"/notlogin/AddToCartServletEnd"})
-public class AddToCartServletEnd extends HttpServlet {
+@WebServlet(name = "BuyServlet", urlPatterns = {"/notlogin/BuyServlet"})
+public class BuyServlet extends HttpServlet {
 
     Connection conn;
     PreparedStatement pst;
@@ -41,11 +41,14 @@ public class AddToCartServletEnd extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        PrintWriter pt=response.getWriter();
         int user_id = Integer.parseInt(request.getParameter("user_id"));
         int item_id = Integer.parseInt(request.getParameter("item_id"));
         int amount = Integer.parseInt(request.getParameter("amount"));
-
+        int one_item_price = 0;
+        int user_budget = 0;
+        int cost = 0;
+        int avilable_amount=0;
         conn = (Connection) request.getServletContext().getAttribute("conn");
         try {
             pst = conn.prepareStatement("select trans_id from transactions where user_id=? and item_id=?");
@@ -81,12 +84,86 @@ public class AddToCartServletEnd extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
             }
-            response.sendRedirect("MainForUser");
+            //response.sendRedirect("MainForUser");
+
+            //////////////////////////////////Actualy Buying/////////////////////////////////////////////////////
+                           
+            try {
+                pst = conn.prepareStatement("select * from items where item_id=?");
+                pst.setInt(1, item_id);
+                rs = pst.executeQuery();
+                rs.next();
+                one_item_price = rs.getInt(3);
+                avilable_amount= rs.getInt(5);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                pst = conn.prepareStatement("select * from users where user_id=?");
+                pst.setInt(1, user_id);
+                rs = pst.executeQuery();
+                rs.next();
+                user_budget = rs.getInt(5);
+            } catch (SQLException ex) {
+                Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            cost = amount * one_item_price;
+            if (cost < user_budget && (avilable_amount-amount)>0) {
+                
+                user_budget = user_budget - cost;
+                //deleting from cart
+                try {
+                    pst = conn.prepareStatement("delete from transactions where user_id=? and item_id=? ");
+                    pst.setInt(1, user_id);
+                    pst.setInt(2, item_id);
+                    pst.execute();
+                    
+                
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //decreasing user budget
+                try {
+                    pst = conn.prepareStatement("update users set user_budget=? where user_id=? ");
+                    pst.setInt(1, user_budget);
+                    pst.setInt(2, user_id);
+                    pst.execute();
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //decreasing the avilable amount
+                try {
+                    pst = conn.prepareStatement("update items set avilable_amount=avilable_amount-? where item_id=? ");
+                    pst.setInt(1, amount);
+                    pst.setInt(2, item_id);
+                    pst.execute();
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                response.sendRedirect("notlogin/MainForUser");
+            }
+        else{
+               request.getRequestDispatcher("/SouqHeader.html").include(request, response);
+                pt.println("<div align=\"center\">"
+                        +"<form actiom=\"UserCartServlet\">"
+                        + "<h1>Sorry we can't continue the transaction<br>"
+                        + "Your budget is lower than the cost</h1><br>"
+//                        + "<input type=\"hidden\" name=\"item_id\" value=\""+request.getParameter("item_id")+"\">"
+//                        + "<input type=\"hidden\" name=\"user_id\" value=\""+request.getParameter("user_id")+"\">"
+//                        + "<input type=\"hidden\" name=\"amount\" value=\""+request.getParameter("amount")+"\">"
+//                        + "<input type=\"submit\" value=\"Back\">"
+                        + "</form>"
+                        + "</div>");
+            
+        }
 
         } catch (SQLException ex) {
             Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+         request.getRequestDispatcher("/SouqFooter.html").include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

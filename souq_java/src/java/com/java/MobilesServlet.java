@@ -51,7 +51,7 @@ public class MobilesServlet extends HttpServlet {
         try {
             pst = conn.prepareStatement("select * from items where item_category like 'mobiles'");
             rs = pst.executeQuery();
-            request.getRequestDispatcher("SouqHeader.html").include(request, response);
+            request.getRequestDispatcher("/SouqHeader.html").include(request, response);
             pt.println("<div align=\"center\">\n"
                 + "   <table>");
             while (rs.next()) {
@@ -59,7 +59,7 @@ public class MobilesServlet extends HttpServlet {
                 i++;
                 pt.println("<td item-width=\"100px\"><div align=\"center\">\n"
                         +"<form method=\"get\" action=\"AddToCartServlet\" > "
-                        + "<img width=\"100px\" height=\"100px\" src=\"" + rs.getString(6) + "\"/>\n"
+                        + "<img width=\"100px\" height=\"100px\" src=\"" +"/souq_java/"+ rs.getString(6) + "\"/>\n"
                         + "    <br>\n"
                         + "    <h3>" + rs.getString(2) + "</h3>\n" + "<h2>&nbsp;&nbsp;&nbsp;price:"+ rs.getString(3)+"&nbsp;&nbsp;&nbsp;</h2>" 
                         + "    <br>\n<input type=\"hidden\" name=\"choosedId\" value=\""+rs.getString(1)+"\">"
@@ -70,7 +70,7 @@ public class MobilesServlet extends HttpServlet {
               pt.println("</table>\n"
                     + "  </div>");
         
-        request.getRequestDispatcher("SouqFooter.html").include(request, response);
+        request.getRequestDispatcher("/SouqFooter.html").include(request, response);
           
         } catch (SQLException ex) {
             Logger.getLogger(MobilesServlet.class.getName()).log(Level.SEVERE, null, ex);

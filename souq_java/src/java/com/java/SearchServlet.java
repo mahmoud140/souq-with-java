@@ -18,12 +18,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+//import org.apache.commons.lang3.math.NumberUtils;
 /**
  *
  * @author Mohamed
  */
-@WebServlet(name = "SearchServlet", urlPatterns = {"/SearchServlet"})
+@WebServlet(name = "SearchServlet", urlPatterns = {"/notlogin/SearchServlet"})
 public class SearchServlet extends HttpServlet {
   
      Connection conn;
@@ -48,10 +48,24 @@ public class SearchServlet extends HttpServlet {
        
 
         try {
-            pst = conn.prepareStatement("select * from items where item_name=?");
-            pst.setString(1,search);
+            pst = conn.prepareStatement("select * from items where item_name=? or item_price=? ");
+            pst.setString(1, search);
+            boolean ret = true;
+            try {
+
+                Integer.parseInt(search);
+
+            } catch (NumberFormatException e) {
+                ret = false;
+            }
+            if(ret)
+            {
+                pst.setInt(2,Integer.parseInt(search));
+            }else{
+               pst.setInt(2,-1); 
+            }
             rs = pst.executeQuery();
-            request.getRequestDispatcher("SouqHeader.html").include(request, response);
+            request.getRequestDispatcher("/SouqHeader.html").include(request, response);
             pt.println("<div align=\"center\">\n"
                 + "   <table>");
             while (rs.next()) {
@@ -59,7 +73,7 @@ public class SearchServlet extends HttpServlet {
                 i++;
                 pt.println("<td item-width=\"100px\"><div align=\"center\">\n"
                         +"<form method=\"get\" action=\"AddToCartServlet\" > "
-                        + "<img width=\"100px\" height=\"100px\" src=\"" + rs.getString(6) + "\"/>\n"
+                        + "<img width=\"100px\" height=\"100px\" src=\"" +"/souq_java/"+ rs.getString(6) + "\"/>\n"
                         + "    <br>\n"
                         + "    <h3>" + rs.getString(2) + "</h3>\n" + "<h2>&nbsp;&nbsp;&nbsp;price:"+ rs.getString(3)+"&nbsp;&nbsp;&nbsp;</h2>" 
                         + "    <br>\n<input type=\"hidden\" name=\"choosedId\" value=\""+rs.getString(1)+"\">"
@@ -70,7 +84,7 @@ public class SearchServlet extends HttpServlet {
               pt.println("</table>\n"
                     + "  </div>");
         
-        request.getRequestDispatcher("SouqFooter.html").include(request, response);
+        request.getRequestDispatcher("/SouqFooter.html").include(request, response);
           
         } catch (SQLException ex) {
             Logger.getLogger(MobilesServlet.class.getName()).log(Level.SEVERE, null, ex);
