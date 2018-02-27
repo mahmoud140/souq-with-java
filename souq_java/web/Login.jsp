@@ -58,7 +58,7 @@
              }
              else{
                  request.getSession(true).setAttribute("user_id", id);;
-                 response.sendRedirect("MainForUser");
+                 response.sendRedirect("notlogin/MainForUser");
              }
          }else{
             response.sendRedirect("LoginFail.jsp"); 

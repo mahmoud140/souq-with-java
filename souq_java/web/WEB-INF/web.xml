@@ -43,6 +43,10 @@
         <servlet-name>listOfUsers</servlet-name>
         <servlet-class>com.java.listOfUsers</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogOut</servlet-name>
+        <servlet-class>com.java.LogOut</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GenerateDumyCookies</servlet-name>
         <url-pattern>/GenerateDumyCookies</url-pattern>
@@ -58,6 +62,10 @@
     <servlet-mapping>
         <servlet-name>listOfUsers</servlet-name>
         <url-pattern>/notlogin/listOfUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOut</servlet-name>
+        <url-pattern>/notlogin/LogOut</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -33,20 +33,20 @@ public class MainForUser extends HttpServlet {
             throws ServletException, IOException {
          PrintWriter pt = response.getWriter();
          System.out.println(request.getSession(false).getAttribute("user_id"));
-        request.getRequestDispatcher("SouqHeader.html").include(request, response);
+        request.getRequestDispatcher("/SouqHeader.html").include(request, response);
         pt.println("<html>\n"
                 + "<body>\n"
                 + "    <br><br>\n"
                 + "    <table width=\"100%\">\n"
                 + "    <tr>\n"
-                + "      <td  align=\"center\"><a href=\" MobilesServlet\"><img src=\"mobile-phones.jpg\" width=\"50%\"/><br><h3>mobiles</h3> </a></td>\n"
-                + "      <td  align=\"center\"><a href=\"labtopsServlet\"><img src=\"laptops.jpg\"width=\"50%\" /><br><h3>labtops</h3> </a></td>\n"
+                + "      <td  align=\"center\"><a href=\" MobilesServlet\"><img src=\"/souq_java/mobile-phones.jpg\" width=\"50%\"/><br><h3>mobiles</h3> </a></td>\n"
+                + "      <td  align=\"center\"><a href=\"labtopsServlet\"><img src=\"/souq_java/laptops.jpg\"width=\"50%\" /><br><h3>labtops</h3> </a></td>\n"
                 + "    </tr>\n"
                 + "    </table>\n"
                 + "</body>\n"
                 + "\n"
                 + "</html>");
-        request.getRequestDispatcher("SouqFooter.html").include(request, response);
+        request.getRequestDispatcher("/SouqFooter.html").include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -21,10 +21,11 @@
     }
 </style>
 <ul class="list">
-    <li><a  class="link" href=""> View All products.</a></li></br>
-    <li><a  class="link" href=""> Add To The List.</a></li></br>
+    <li><a  class="link" href=""> View All products.</a></li><br>
+    <li><a  class="link" href=""> Add To The List.</a></li><br>
     <li><a  class="link" href=""> Edit The List.</a></li><br>
     <li><a  class="link"  href=""> Remove From The List.</a></li> <br>
+    <li><a class="link" href="listOfUsers.jsp">List Of Users.</a></li><br>
 </ul>
   
 
