@@ -39,8 +39,13 @@ public class MainForUser extends HttpServlet {
                 + "    <br><br>\n"
                 + "    <table width=\"100%\">\n"
                 + "    <tr>\n"
+<<<<<<< HEAD
                 + "      <td  align=\"center\"><a href=\"MobilesServlet\"><img src=\""+"/souq_java/"+"mobile-phones.jpg\" width=\"50%\"/><br><h3>mobiles</h3> </a></td>\n"
                 + "      <td  align=\"center\"><a href=\"labtopsServlet\"><img src=\""+"/souq_java/"+"laptops.jpg\"width=\"50%\" /><br><h3>labtops</h3> </a></td>\n"
+=======
+                + "      <td  align=\"center\"><a href=\" MobilesServlet\"><img src=\"/souq_java/mobile-phones.jpg\" width=\"50%\"/><br><h3>mobiles</h3> </a></td>\n"
+                + "      <td  align=\"center\"><a href=\"labtopsServlet\"><img src=\"/souq_java/laptops.jpg\"width=\"50%\" /><br><h3>labtops</h3> </a></td>\n"
+>>>>>>> 59c0d58e029bcf5abcc39e4d583b287e5587f36c
                 + "    </tr>\n"
                 + "    </table>\n"
                 + "</body>\n"
