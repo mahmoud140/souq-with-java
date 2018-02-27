@@ -11,15 +11,22 @@
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/L*</url-pattern>
+        <url-pattern>/login.html</url-pattern>
+        <url-pattern>/RForm*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>NotLoginFilter</filter-name>
         <url-pattern>/notlogin/*</url-pattern>
+        <url-pattern>/listOfUsers.jsp</url-pattern>
     </filter-mapping>
     <listener>
         <description>ServletContextListener, HttpSessionListener</description>
         <listener-class>com.java.InitListener</listener-class>
     </listener>
+    <!--    <servlet>
+        <servlet-name>notlogin</servlet-name>
+        <jsp-file>/notlogin/listOfUsers.jsp</jsp-file>
+    </servlet>-->
     <servlet>
         <servlet-name>GenerateDumyCookies</servlet-name>
         <servlet-class>com.java.GenerateDumyCookies</servlet-class>
@@ -32,6 +39,10 @@
         <servlet-name>AlreadyLogin</servlet-name>
         <servlet-class>com.java.AlreadyLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listOfUsers</servlet-name>
+        <servlet-class>com.java.listOfUsers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GenerateDumyCookies</servlet-name>
         <url-pattern>/GenerateDumyCookies</url-pattern>
@@ -43,6 +54,10 @@
     <servlet-mapping>
         <servlet-name>AlreadyLogin</servlet-name>
         <url-pattern>/notlogin/AlreadyLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listOfUsers</servlet-name>
+        <url-pattern>/notlogin/listOfUsers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -4,7 +4,7 @@
     Author     : Mahmoud
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page  session="false" contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="SouqHeader.html"></jsp:include>
 <center><h1> <font color="red">Login fail</font></h1></center>
 <jsp:include page="SouqFooter.html"></jsp:include>
