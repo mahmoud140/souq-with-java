@@ -23,13 +23,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "AddToCartServletEnd", urlPatterns = {"/AddToCartServletEnd"})
-public class AddToCartServletEnd extends HttpServlet {
-
-    Connection conn;
+@WebServlet(name = "SearchServlet", urlPatterns = {"/SearchServlet"})
+public class SearchServlet extends HttpServlet {
+  
+     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,52 +40,41 @@ public class AddToCartServletEnd extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int user_id = Integer.parseInt(request.getParameter("user_id"));
-        int item_id = Integer.parseInt(request.getParameter("item_id"));
-        int amount = Integer.parseInt(request.getParameter("amount"));
-
+        response.setContentType("text/html;charset=UTF-8");
+        String search=request.getParameter("search");
+        PrintWriter pt = response.getWriter();
+        int i=0;
         conn = (Connection) request.getServletContext().getAttribute("conn");
+       
+
         try {
-            pst = conn.prepareStatement("select trans_id from transactions where user_id=? and item_id=?");
-            pst.setInt(1, user_id);
-            pst.setInt(2, item_id);
+            pst = conn.prepareStatement("select * from items where item_name=?");
+            pst.setString(1,search);
             rs = pst.executeQuery();
-
-            if (rs.next()) {
-                try {
-                    pst = conn.prepareStatement("update transactions set amount=? where user_id=? and item_id=?");
-                    pst.setInt(1, amount);
-                    pst.setInt(2, user_id);
-                    pst.setInt(3, item_id);
-                    pst.executeQuery();
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                try {
-                    pst = conn.prepareStatement("insert into transactions(user_id,item_id,trans_state,amount) values(?,?,?,?)");
-                    pst.setInt(1, user_id);
-                    pst.setInt(2, item_id);
-                    pst.setString(3, "waiting");
-                    pst.setInt(4, amount);
-                    pst.executeQuery();
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            request.getRequestDispatcher("SouqHeader.html").include(request, response);
+            pt.println("<div align=\"center\">\n"
+                + "   <table>");
+            while (rs.next()) {
+                if(i==0){pt.println("<tr>");}
+                i++;
+                pt.println("<td item-width=\"100px\"><div align=\"center\">\n"
+                        +"<form method=\"get\" action=\"AddToCartServlet\" > "
+                        + "<img width=\"100px\" height=\"100px\" src=\"" + rs.getString(6) + "\"/>\n"
+                        + "    <br>\n"
+                        + "    <h3>" + rs.getString(2) + "</h3>\n" + "<h2>&nbsp;&nbsp;&nbsp;price:"+ rs.getString(3)+"&nbsp;&nbsp;&nbsp;</h2>" 
+                        + "    <br>\n<input type=\"hidden\" name=\"choosedId\" value=\""+rs.getString(1)+"\">"
+                        + "<input type=\"submit\" value=\"Add to cart\" > </form></div> </td>");
+                if(i==5){i=0;pt.println("</tr>");}
             }
-            try {
-                pst = conn.prepareStatement("delete from transactions where amount=0");
-                pst.executeQuery();
-            } catch (SQLException ex) {
-                Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            response.sendRedirect("MainForUser");
-
+            if(i!=0){pt.println("</tr>");}
+              pt.println("</table>\n"
+                    + "  </div>");
+        
+        request.getRequestDispatcher("SouqFooter.html").include(request, response);
+          
         } catch (SQLException ex) {
-            Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MobilesServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
