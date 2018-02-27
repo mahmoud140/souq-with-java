@@ -13,7 +13,8 @@
         Connection conn = (Connection) application.getAttribute("conn");
         DBClass insert = new DBClass(conn);
         ResultSet rs=insert.listOfUsers();
-        out.println(
+        out.println("<html>\n" +
+"<body>\n" +
 "<table border=\"2\"> \n" +
 "   <tr>\n" +
 "        <td>uName</td>\n" +
@@ -28,34 +29,34 @@
 "   \n" +
 "   </tr>   ");
         while (rs.next()) {
-            String uName = rs.getString("user_name");
-            String user_password = rs.getString("user_password");
-            int user_budget = rs.getInt("user_budget");
-            String address = rs.getString("address");
-            String birth_date = rs.getString("birth_date");
-            String job = rs.getString("job");
-            String email = rs.getString("email");
+//            String uName = rs.getString("user_name");
+//            String user_password = rs.getString("user_password");
+//            int user_budget = rs.getInt("user_budget");
+//            String address = rs.getString("address");
+//            String birth_date = rs.getString("birth_date");
+//            String job = rs.getString("job");
+//            String email = rs.getString("email");
             out.println("<tr>");
             out.println("<td>");
-            out.println(uName);
+            out.println(rs.getString(1));
             out.println("</td>");
             out.println("<td>");
-            out.println(user_password);
+            out.println(rs.getString(2));
             out.println("</td>");
             out.println("<td>");
-            out.println(user_budget);
+            out.println(rs.getInt(3));
             out.println("</td>");
             out.println("<td>");
-            out.println(address);
+            out.println(rs.getString(4));
             out.println("</td>");
             out.println("<td>");
-            out.println(birth_date);
+            out.println(rs.getString(5));
             out.println("</td>");
             out.println("<td>");
-            out.println(job);
+            out.println(rs.getString(6));
             out.println("</td>");
             out.println("<td>");
-            out.println(email);
+            out.println( rs.getString(7));
             out.println("</td>");
             out.println("</tr>");
         }
