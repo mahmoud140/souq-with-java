@@ -9,7 +9,7 @@
     #u{
         background-position: center;
         color: blueviolet;
-        font-size: 25px;
+        font-size: 20px;
 
     }
     #user,#pass
@@ -19,54 +19,39 @@
         background-position: center;
         background-size: 10px;
         width:20% ;
-
-
-
-
     }
     #form
     {
         align-content: center;
-
     }
     #sub
     { 
         text-align: center;
         text-decoration: yellow;
         background-size: 10px;
-
         width: 7%;
         height: 5%; 
         color: blueviolet;
         font-size: 20px;
-
-
     }
 
 </style>
+
 <jsp:include page="SouqHeader.html"></jsp:include>
     <form id="form" action="RForm.jsp">
-        <br>UserName
-        <input id="user" type="text" name="UserName" placeholder="UserName">
-        <br>
-        <br>Password
-        <input id="pass" type="text" name="Password" placeholder="Password">
-        <br>
-        <br>
-        Credit Limit
-        <input id="user" type="text" name="CreditLimit" placeholder="Credit Limit">
-        <br>
-        <br>Job
-        <input type="text" name="Job" placeholder="Job">
-        <br>
-        <br>
-        E-mail
+        <p id="u">UserName</p>
+        <input id="user" type="text" name="UserName" placeholder="UserName" required>
+        <p id="u">Password</p>
+        <input id="user" type="password" name="Password" placeholder="Password" required>
+        <p id="u">Credit Limit</p>      
+        <input id="user" type="text" name="CreditLimit" placeholder="Credit Limit" required>
+        <p id="u">Job</p>  
+        <input id="user" type="text" name="Job" placeholder="Job">
+        <p id="u">E-mail</p> 
         <input id="user" type="text" name="E-mail" placeholder="E-mail">
-        <br>
-        <br>Address
+        <p id="u">Address</p> 
         <input id="user" type="text" name="Address" placeholder="Address">
-        <br>
-        <br>Birth-Date
+        <p id="u">Birth-Date</p> 
         <input id="user" type="text" name="BirthDate" placeholder="1994-12-12">
         <br>
         <br>
