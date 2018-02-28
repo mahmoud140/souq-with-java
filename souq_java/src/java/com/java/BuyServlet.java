@@ -109,7 +109,7 @@ public class BuyServlet extends HttpServlet {
                 Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
             }
             cost = amount * one_item_price;
-            if (cost < user_budget && (avilable_amount-amount)>0) {
+            if (cost < user_budget && (avilable_amount-amount)>=0) {
                 
                 user_budget = user_budget - cost;
                 //deleting from cart
@@ -143,7 +143,7 @@ public class BuyServlet extends HttpServlet {
                     Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                response.sendRedirect("notlogin/MainForUser");
+                response.sendRedirect("MainForUser");
             }
         else{
                request.getRequestDispatcher("/SouqHeader.html").include(request, response);
