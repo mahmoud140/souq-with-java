@@ -75,7 +75,12 @@ public class UserCartServlet extends HttpServlet {
                                 + "select the amount : <input type=\"number\" min=\"0\" required name=\"amount\" value=\"" + amount + "\" max=\"" + rs1.getInt(5) + "\">"
                                 + "<input type=\"hidden\" name=\"item_id\" value=\"" + item_id + "\">"
                                 + "<input type=\"hidden\" name=\"user_id\" value=\"" + user_id + "\">"
-                                + "<input type=\"submit\" value=\"Buy\" height=\"10px\"> </form></div> </td>"
+                                + "<input type=\"submit\" value=\"Buy\" height=\"10px\"> </form><br>"
+                                + "<form method=\"get\" action=\"CancelBuyServlet\" >"
+                                + "<input type=\"hidden\" name=\"item_id\" value=\"" + item_id + "\">"
+                                + "<input type=\"hidden\" name=\"user_id\" value=\"" + user_id + "\">"
+                                + "<input type=\"submit\" value=\"Cancel\" height=\"10px\"> </form><br><br>"
+                                + "</div> </td>"
                                 + "<td width=\"80.5%\"><div align=\"center\">" + rs1.getString(7) + "</div></td></tr>");
                     }else{
                         try{
@@ -90,7 +95,7 @@ public class UserCartServlet extends HttpServlet {
                 }
             }
             pt.println("</table>");
-//            request.getRequestDispatcher("/SouqFooter.html").include(request, response);
+            request.getRequestDispatcher("/SouqFooter.html").include(request, response);
         } catch (SQLException ex) {
         }
 
