@@ -54,7 +54,7 @@
 //                 response.getWriter().println("admin");
                  System.out.println("admin3");
                  request.getSession(true).setAttribute("user_id", id);
-                 response.sendRedirect("MainForAdmin.html");
+                 response.sendRedirect("adminmanage.jsp");
              }
              else{
                  request.getSession(true).setAttribute("user_id", id);;

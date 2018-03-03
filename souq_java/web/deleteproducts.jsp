@@ -58,8 +58,7 @@
         }
     </style> 
 <%
-    Class.forName("org.postgresql.Driver");
-    Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/iti_souq", "postgres", "root");
+    Connection con = (Connection) request.getServletContext().getAttribute("conn");
     String name = request.getParameter("name");
     String search = "select item_name from items";
     Statement stmt = con.createStatement();

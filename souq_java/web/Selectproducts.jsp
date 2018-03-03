@@ -12,8 +12,7 @@
 <jsp:include page="SouqAdminHeader.html"></jsp:include> 
 <%
 
-    Class.forName("org.postgresql.Driver");
-    Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/iti_souq", "postgres", "root");
+    Connection con = (Connection) request.getServletContext().getAttribute("conn");
     String name = request.getParameter("name");
     String price = request.getParameter("price");
     String category = request.getParameter("category");
