@@ -21,10 +21,12 @@
         }
     </script>
 <%
-     out.println("<html><body><h1 color='blueviolet'>product deleted successfully :D'</h1></body></html>");
+     out.println("<html><body><h1 color='blueviolet'>Operation accomplished successfully :D'</h1></body></html>");
      
 
  
 %> 
-   <a href="adminmanage.jsp"><input class="back" type="submit" value="Back to main menu"/></a></br>
-   <a href="Deleteproducts.jsp"><input class="back" type="submit" value="Back to delete menu"/></a></br>
+  <div><a href="adminmanage.jsp"><input class="back" type="submit" value="Back to main menu"/></a><br></div>
+    <a href="Deleteproducts.jsp"><input class="back" type="submit" value="Back to delete menu"/></a></br>
+    <a href="Updateproduct.jsp"><input class="back" type="submit" value="Back to edit menu"/></a></br>
+    <a href="insertproduct.jsp"><input class="back" type="submit" value="Back to Add menu"/></a></br>
