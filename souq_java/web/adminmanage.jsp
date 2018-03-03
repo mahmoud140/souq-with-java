@@ -21,11 +21,11 @@
     }
 </style>
 <ul class="list">
-    <li><a  class="link" href=""> View All products.</a></li><br>
-    <li><a  class="link" href=""> Add New Product.</a></li><br>
-    <li><a  class="link" href=""> Edit Product.</a></li><br>
-    <li><a  class="link"  href="deleteproducts.jsp"> Remove Product.</a></li> <br>
-    <li><a class="link" href="listOfUsers.jsp">List Of Users.</a></li><br>
+    <li><a  class="link" href="Selectproduct.jsp"> View All products.</a></li><br>
+    <li><a  class="link" href="insertproduct.jsp"> Add New Product.</a></li><br>
+    <li><a  class="link" href="Updateproduct.jsp"> Edit Product.</a></li><br>
+    <li><a  class="link" href="deleteproducts.jsp"> Remove Product.</a></li> <br>
+    <li><a  class="link" href="listOfUsers.jsp">List Of Users.</a></li><br>
 </ul>
   
 
