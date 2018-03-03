@@ -47,13 +47,14 @@ public class EndEditServlet extends HttpServlet {
         conn = (Connection) request.getServletContext().getAttribute("conn");
 
         try {
-                    pst = conn.prepareStatement("update users set user_budget=? , address=? , job=? , email=? , birth_date=? where user_id=? ");
+                    pst = conn.prepareStatement("update users set user_budget=? , address=? , job=? , email=? , birth_date=? , user_password-? where user_id=? ");
                     pst.setInt(1,Integer.valueOf(request.getParameter("budget")));
                     pst.setString(2,request.getParameter("address"));
                     pst.setString(3,request.getParameter("job"));
                     pst.setString(4,request.getParameter("email"));
                     pst.setDate(5,Date.valueOf(request.getParameter("birthDate")));
-                    pst.setInt(6,(int) request.getSession(false).getAttribute("user_id"));
+                    pst.setString(6,request.getParameter("password"));
+                    pst.setInt(7,(int) request.getSession(false).getAttribute("user_id"));
                     pst.execute();
                     
                     

@@ -92,7 +92,6 @@ public class ProfileServlet extends HttpServlet {
                     + "    <tr><td>job: </td><td>"+rs.getString(8)+"</td></tr>\n"
                     + "    <tr><td>birth date: </td><td>"+rs.getString(7)+"</td></tr>\n"
                     + "    <tr><td>email: </td><td>"+rs.getString(9)+"</td></tr>\n"
-                    
                     + "</table><br>\n"
                     + "\n"
                     +"<form method='get' action='EditProfileServlet'>"

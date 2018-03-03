@@ -106,17 +106,18 @@ public class EditProfileServlet extends HttpServlet {
                     + "    <tr><td>job: </td><td><input type='text' name='job' value='" + rs.getString(8) + "' required></td></tr>\n"
                     + "    <tr><td>birth date: </td><td><input type='text' name='birthDate' value='" + rs.getString(7) + "' required></td></tr>\n"
                     + "    <tr><td>email: </td><td><input type='text' name='email' value='" + rs.getString(9) + "' required></td></tr>\n"
+                    + "    <tr><td>password: </td><td><input type='text' name='password' value='" + rs.getString(3) + "' required></td></tr>\n"
                     + "</table><br>"
                     + "<input type='submit' value='Done'></form>"
                     + "</form>\n"
                     + "\n"
-                    + "</div>"
+                    + "</div><br><br><br>"
             );
-
+            request.getRequestDispatcher("/SouqFooter.html").include(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-         request.getRequestDispatcher("/SouqFooter.html").include(request, response);
+         
 
     }
 
