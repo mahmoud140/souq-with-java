@@ -66,7 +66,7 @@
     ResultSet rs = stmt.executeQuery(search);
             
     out.println("<br>");
-    out.println("<table align='center' border='1'  bordercolor='blueviolet' >"+
+    out.println("<table align='center' border='3'  bordercolor='blueviolet' >"+
             "   <tr>\n" +
 "        <th bgcolor='blueviolet'>Product name</th>\n" +
 "   </tr>   ");

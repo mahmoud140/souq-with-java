@@ -1,6 +1,6 @@
 <%-- 
-    Document   : insertproduct
-    Created on : Mar 2, 2018, 9:46:32 AM
+    Document   : Selectproducts
+    Created on : Mar 3, 2018, 2:54:08 AM
     Author     : Noha
 --%>
 
@@ -10,7 +10,6 @@
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="SouqAdminHeader.html"></jsp:include> 
-
 <%
 
     Class.forName("org.postgresql.Driver");
@@ -93,44 +92,5 @@
 
     }
 </style>
-<form  method="get" action="Insertproducts">
-    <table class="inserttable"  bordercolor="blueviolet" align="center">
-        <tr>
-            <td><p class="p">Enter product name to be Added:</p></td>
-            <td><input class="i" type="text" name="name"  placeholder="Enter item name" required></td>
-
-        </tr>
-        <tr>
-            <td><p class="p">Price:</p></td>
-            <td><input class="i" type="text" name="price"  placeholder="Enter price" required></td>
-        </tr>
-        <tr>
-            <td><p class="p">category:</p></td>
-            <td><input  class="i" type="text" name="category"  placeholder="Enter category" required></td>
-        </tr>
-        <tr>
-            <td><p class="p">amount in the stock :</p></td>
-            <td><input  class="i" type="text" name="amount"  placeholder="Enter amount" required></td>
-        </tr> 
-
-
-        <tr>
-            <td><p class="p"> product photo(url):</p></td>
-            <td><input  class="i" type="text" name="photo"  placeholder="Enter photo" required></td>
-        </tr> 
-
-        <tr>
-
-            <td><p class="p"> Description:</p></td>
-            <td ><textarea    name="description" placeholder="Enter description" required></textarea></td>
-        </tr>
-        <tr> 
-            <td> <input class="button" type="submit" value="ADD"/>
-                <input class="button" type="reset" value="reset"/>
-
-            </td>
-        </tr>
-    </table>
-</form>
-
 <a href="adminmanage.jsp"><input class="back" type="submit" value="Back to main menu"/></a>
+

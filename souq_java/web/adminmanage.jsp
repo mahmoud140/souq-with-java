@@ -21,7 +21,7 @@
     }
 </style>
 <ul class="list">
-    <li><a  class="link" href="Selectproduct.jsp"> View All products.</a></li><br>
+    <li><a  class="link" href="Selectproducts.jsp"> View All Products.</a></li><br>
     <li><a  class="link" href="insertproduct.jsp"> Add New Product.</a></li><br>
     <li><a  class="link" href="Updateproduct.jsp"> Edit Product.</a></li><br>
     <li><a  class="link" href="deleteproducts.jsp"> Remove Product.</a></li> <br>
