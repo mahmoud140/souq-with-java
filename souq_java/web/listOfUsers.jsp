@@ -77,6 +77,17 @@
                 color: blueviolet;
                 font-size: 20px;    
            }
+           .backbut
+           { 
+               text-align: center;
+               text-decoration: yellow;
+                background-size: 10px;
+                width: 20%;
+                height: 5%; 
+                color: blueviolet;
+                font-size: 20px;    
+           }
+           
     </style>
 
 <%
@@ -144,4 +155,6 @@
     <br>
     <input class="sub" type="submit" value="Enter">
 </form>
+ <a href="adminmanage.jsp"> <input class="backbut" type="submit" value="Back to main menu"/></a><br>
 <jsp:include page="SouqFooter.html"></jsp:include>
+
