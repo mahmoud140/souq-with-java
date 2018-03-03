@@ -18,14 +18,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
 
 /**
  *
  * @author Mohamed
  */
-@WebServlet(name = "ProfileServlet", urlPatterns = {"/notlogin/ProfileServlet"})
-public class ProfileServlet extends HttpServlet {
+@WebServlet(name = "EditProfileServlet", urlPatterns = {"/notlogin/EditProfileServlet"})
+public class EditProfileServlet extends HttpServlet {
 
     Connection conn;
     PreparedStatement pst;
@@ -42,19 +41,33 @@ public class ProfileServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pt = response.getWriter();
         conn = (Connection) request.getServletContext().getAttribute("conn");
-        int user_id = (int) request.getSession(false).getAttribute("user_id");
+        int user_id = (int) Integer.valueOf(request.getParameter("user_id"));
         try {
             pst = conn.prepareStatement("select * from users where user_id=?");
             pst.setInt(1, user_id);
             rs = pst.executeQuery();
             rs.next();
             request.getRequestDispatcher("/SouqHeader.html").include(request, response);
-
-            pt.println("<style>#customers {\n"
+            pt.println("<style>"
+                    + "      \n"
+                    + "            input[type=number] {\n"
+                    + "    width: 50%;\n"
+                    + "    box-sizing: border-box;\n"
+                    + "    border: 2px solid #ccc;\n"
+                    + "    border-radius: 4px;\n"
+                    + "    font-size: 16px;\n"
+                    + "    background-color: white;\n"
+                    + "    background-image: url('searchicon.png');\n"
+                    + "    background-position: 10px 10px; \n"
+                    + "    background-repeat: no-repeat;\n"
+                    + "    padding: 12px 20px 12px 40px;\n"
+                    + "    -webkit-transition: width 0.4s ease-in-out;\n"
+                    + "    transition: width 0.4s ease-in-out;\n"
+                    + "}"
+                    + "#customers {\n"
                     + "            font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n"
                     + "            border-collapse: collapse;\n"
                     + "            width: 50%;\n"
@@ -79,28 +92,27 @@ public class ProfileServlet extends HttpServlet {
                     + "            color: white;\n"
                     + "            text-align: center;\n"
                     + "        }</style>"
-                    +"<div align=\"center\">\n"
+                    + "<div align=\"center\">\n"
                     + "    <br><br><img width=\"100px\" height=\"100px\" src=\"/souq_java/blank.jpeg\" /><br>\n"
-                    + "    <h2>"+rs.getString(2)+"</h2>\n"
+                    + "    <h2>" + rs.getString(2) + "</h2>\n"
                     + "</div>\n"
                     + "<br><br>\n"
                     + "<div align=\"center\">\n"
                     + "\n"
+                    + "<form method='get' action='EndEditServlet'>"
                     + "<table id=\"customers\">\n"
-                    + "    <tr><td>budget: </td><td>"+rs.getString(5)+"</td></tr>\n"
-                    + "    <tr><td>address: </td><td>"+rs.getString(6)+"</td></tr>\n"
-                    + "    <tr><td>job: </td><td>"+rs.getString(8)+"</td></tr>\n"
-                    + "    <tr><td>birth date: </td><td>"+rs.getString(7)+"</td></tr>\n"
-                    + "    <tr><td>email: </td><td>"+rs.getString(9)+"</td></tr>\n"
-                    
-                    + "</table><br>\n"
+                    + "    <tr><td>budget: </td><td><input type='number' name='budget' value='" + rs.getString(5) + "' min='0' required></td></tr>\n"
+                    + "    <tr><td>address: </td><td><input type='text' name='address' value='" + rs.getString(6) + "' required></td></tr>\n"
+                    + "    <tr><td>job: </td><td><input type='text' name='job' value='" + rs.getString(8) + "' required></td></tr>\n"
+                    + "    <tr><td>birth date: </td><td><input type='text' name='birthDate' value='" + rs.getString(7) + "' required></td></tr>\n"
+                    + "    <tr><td>email: </td><td><input type='text' name='email' value='" + rs.getString(9) + "' required></td></tr>\n"
+                    + "</table><br>"
+                    + "<input type='submit' value='Done'></form>"
+                    + "</form>\n"
                     + "\n"
-                    +"<form method='get' action='EditProfileServlet'>"
-                    + "<input type='hidden' name='user_id' value='"+user_id+"'><br>"
-                    + "<input type='submit' value='Edit'></form>"
                     + "</div>"
-                    );
-            
+            );
+
         } catch (SQLException ex) {
             Logger.getLogger(ProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

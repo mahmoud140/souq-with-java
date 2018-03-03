@@ -23,9 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mohamed
  */
-@WebServlet(name = "AddToCartServletEnd", urlPatterns = {"/notlogin/AddToCartServletEnd"})
-public class AddToCartServletEnd extends HttpServlet {
-
+@WebServlet(name = "CancelBuyServlet", urlPatterns = {"/notlogin/CancelBuyServlet"})
+public class CancelBuyServlet extends HttpServlet {
+    
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
@@ -41,52 +41,19 @@ public class AddToCartServletEnd extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
         int user_id = Integer.parseInt(request.getParameter("user_id"));
         int item_id = Integer.parseInt(request.getParameter("item_id"));
-        int amount = Integer.parseInt(request.getParameter("amount"));
-
         conn = (Connection) request.getServletContext().getAttribute("conn");
         try {
-            pst = conn.prepareStatement("select trans_id from transactions where user_id=? and item_id=?");
-            pst.setInt(1, user_id);
-            pst.setInt(2, item_id);
-            rs = pst.executeQuery();
-
-            if (rs.next()) {
-                try {
-                    pst = conn.prepareStatement("update transactions set amount=? where user_id=? and item_id=?");
-                    pst.setInt(1, amount);
-                    pst.setInt(2, user_id);
-                    pst.setInt(3, item_id);
-                    pst.executeQuery();
-                } catch (SQLException ex) {
-                    Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                try {
-                    pst = conn.prepareStatement("insert into transactions(user_id,item_id,trans_state,amount) values(?,?,?,?)");
+                    pst = conn.prepareStatement("delete from transactions where user_id=? and item_id=?");
                     pst.setInt(1, user_id);
                     pst.setInt(2, item_id);
-                    pst.setString(3, "waiting");
-                    pst.setInt(4, amount);
                     pst.executeQuery();
                 } catch (SQLException ex) {
                     Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            try {
-                pst = conn.prepareStatement("delete from transactions where amount=0");
-                pst.executeQuery();
-            } catch (SQLException ex) {
-                Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            response.sendRedirect("UserCartServlet");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(AddToCartServletEnd.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+         response.sendRedirect("UserCartServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
