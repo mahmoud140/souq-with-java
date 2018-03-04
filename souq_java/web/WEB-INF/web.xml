@@ -51,6 +51,14 @@
         <servlet-name>GenerateDumyCookies</servlet-name>
         <url-pattern>/GenerateDumyCookies</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Insertproducts</servlet-name>
+        <servlet-class>com.java.Insertproducts</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Insertproducts</servlet-name>
+        <url-pattern>/Insertproducts</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckCookiesEnabled</servlet-name>
         <url-pattern>/CheckCookiesEnabled</url-pattern>

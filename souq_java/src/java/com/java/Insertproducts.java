@@ -5,7 +5,6 @@ package com.java;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -37,10 +36,10 @@ public class Insertproducts extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            Class.forName("org.postgresql.Driver");
+//            Class.forName("org.postgresql.Driver");
 
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/iti_souq", "postgres", "root");
-
+//            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/iti_souq", "postgres", "root");
+            Connection con = (Connection) request.getServletContext().getAttribute("conn");
             String name = request.getParameter("name");
             int price = Integer.parseInt(request.getParameter("price"));
             String category = request.getParameter("category");
@@ -59,26 +58,24 @@ public class Insertproducts extends HttpServlet {
                 }
             }
             if (!found) {
-              
+
                 String query = "insert into items(item_name,item_price,item_category,avilable_amount,photo_url,description) values ('" + name + "','" + price + "','" + category + "','" + amount + "','" + photo + "','" + Description + "')";
                 stmt = con.createStatement();
                 int i = stmt.executeUpdate(query);
                 out.println(stmt);
-              
-               // out.println("<html><body><p>product inserted successfully :D'</p></body></html>");
-                 response.sendRedirect("deletesuccess.jsp");
+
+                // out.println("<html><body><p>product inserted successfully :D'</p></body></html>");
+                response.sendRedirect("deletesuccess.jsp");
             }
             if (found) {
-            
-              // out.println("<html><body><p>product arealy existed </p></body></html>");
-                 response.sendRedirect("deletefail.jsp");
+
+                // out.println("<html><body><p>product arealy existed </p></body></html>");
+                response.sendRedirect("deletefail.jsp");
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(Insertproducts.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Insertproducts.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
+        }
     }
 }
