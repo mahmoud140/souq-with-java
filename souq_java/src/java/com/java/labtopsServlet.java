@@ -49,7 +49,7 @@ public class labtopsServlet extends HttpServlet {
        
 
         try {
-            pst = conn.prepareStatement("select * from items where item_category like 'labtops'");
+            pst = conn.prepareStatement("select * from items where item_category like 'labtops' and avilable_amount!=0");
             rs = pst.executeQuery();
            request.getRequestDispatcher("/SouqHeader.html").include(request, response);
             pt.println("<div align=\"center\">\n"

@@ -49,7 +49,7 @@ public class UserCartServlet extends HttpServlet {
         int amount = 0;
         int max_amount = 0;
         try {
-            pst = conn.prepareStatement("select * from transactions where user_id=? ");
+            pst = conn.prepareStatement("select * from transactions where user_id=? and trans_state like 'waiting' ");
             pst.setInt(1, user_id);
             rs = pst.executeQuery();
             pt.println("<table align=\"left\">");
