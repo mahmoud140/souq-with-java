@@ -17,6 +17,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sun com
  */
+
+
+@WebServlet(name = "Deleteproducts ", urlPatterns = {"/Deleteproducts"})
 public class Deleteproducts extends HttpServlet {
 
     @Override
@@ -32,9 +36,11 @@ public class Deleteproducts extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         boolean found = false;
+       
         try {
-            Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/iti_souq", "postgres", "root");
+           // Class.forName("org.postgresql.Driver");
+             Connection con = (Connection) request.getServletContext().getAttribute("conn");
+          
             String name = request.getParameter("name");
             //check if product is existing or not 
 
@@ -47,8 +53,9 @@ public class Deleteproducts extends HttpServlet {
 
                 }
             }
-            if (found) {
-                String query = "delete from items where item_name ='" + name + "' ";
+            if (found) { 
+                String query = "update items set avilable_amount='0' where item_name ='" + name + "' ";
+               // String query = "delete from items where item_name ='" + name + "' ";
                 PreparedStatement ps = con.prepareStatement(query);
                 ps.executeUpdate();
 
@@ -61,8 +68,7 @@ public class Deleteproducts extends HttpServlet {
                  response.sendRedirect("deletefail.jsp");
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Deleteproducts.class.getName()).log(Level.SEVERE, null, ex);
+       
         } catch (SQLException ex) {
             Logger.getLogger(Deleteproducts.class.getName()).log(Level.SEVERE, null, ex);
         }
