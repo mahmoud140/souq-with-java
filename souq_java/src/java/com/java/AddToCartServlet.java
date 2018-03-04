@@ -106,7 +106,7 @@ public class AddToCartServlet extends HttpServlet {
                         rs = pst.executeQuery();
                         rs.next();
                         System.out.println(rs.getString(1));
-                        pt.println("<table align=\"left\"><tr><td width=\"19.5%\"><div align=\"center\">\n"
+                        pt.println("<table align=\"left\" width=\"100%\"><tr><td width=\"19.5%\"><div align=\"center\">\n"
                                 + "<form method=\"get\" action=\"AddToCartServletEnd\" > "
                                 + "<img width=\"100px\" height=\"100px\" src=\"" + "/souq_java/" + rs.getString(6) + "\"/>\n"
                                 + "    <br>\n"
