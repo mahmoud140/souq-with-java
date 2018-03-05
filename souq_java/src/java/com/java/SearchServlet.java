@@ -67,7 +67,7 @@ public class SearchServlet extends HttpServlet {
             rs = pst.executeQuery();
             request.getRequestDispatcher("/SouqHeader.html").include(request, response);
             pt.println("<div align=\"center\">\n"
-                + "   <table>");
+                + "   <table width=\"100%\">");
             while (rs.next()) {
                 if(i==0){pt.println("<tr>");}
                 i++;

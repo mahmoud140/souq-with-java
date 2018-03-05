@@ -55,7 +55,7 @@ public class AddToCartServlet extends HttpServlet {
         } else {
 
             try {
-                pst = conn.prepareStatement("select * from transactions where item_id=? and user_id=?");
+                pst = conn.prepareStatement("select * from transactions where item_id=? and user_id=? and trans_state like 'waiting' ");
                 pst.setInt(1, item_id);
                 pst.setInt(2, user_id);
                 rs = pst.executeQuery();
@@ -70,6 +70,8 @@ public class AddToCartServlet extends HttpServlet {
                         rs = pst.executeQuery();
                         rs.next();
                         max_amount = rs.getInt(5);
+                        if(max_amount!=0)
+                        {
                         if (amount < max_amount) {
                             pt.println("<table align=\"left\"><tr><td width=\"19.5%\"><div align=\"center\">\n"
                                     + "<form method=\"get\" action=\"AddToCartServletEnd\" > "
@@ -93,6 +95,7 @@ public class AddToCartServlet extends HttpServlet {
                                     + "<input type=\"submit\" value=\"OK\" height=\"10px\"> </form></div> </td>"
                                     + "<td width=\"80.5%\"><div align=\"center\">" + rs.getString(7) + "</div></td></tr></table>");
                         }
+                        }
                     } catch (SQLException ex) {
                     }
                 } else {
@@ -103,7 +106,7 @@ public class AddToCartServlet extends HttpServlet {
                         rs = pst.executeQuery();
                         rs.next();
                         System.out.println(rs.getString(1));
-                        pt.println("<table align=\"left\"><tr><td width=\"19.5%\"><div align=\"center\">\n"
+                        pt.println("<table align=\"left\" width=\"100%\"><tr><td width=\"19.5%\"><div align=\"center\">\n"
                                 + "<form method=\"get\" action=\"AddToCartServletEnd\" > "
                                 + "<img width=\"100px\" height=\"100px\" src=\"" + "/souq_java/" + rs.getString(6) + "\"/>\n"
                                 + "    <br>\n"

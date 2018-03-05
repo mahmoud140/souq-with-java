@@ -48,7 +48,7 @@ public class AddToCartServletEnd extends HttpServlet {
 
         conn = (Connection) request.getServletContext().getAttribute("conn");
         try {
-            pst = conn.prepareStatement("select trans_id from transactions where user_id=? and item_id=?");
+            pst = conn.prepareStatement("select trans_id from transactions where user_id=? and item_id=? and trans_state like 'waiting' ");
             pst.setInt(1, user_id);
             pst.setInt(2, item_id);
             rs = pst.executeQuery();

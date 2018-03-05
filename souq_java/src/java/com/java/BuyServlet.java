@@ -8,9 +8,11 @@ package com.java;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -51,14 +53,14 @@ public class BuyServlet extends HttpServlet {
         int avilable_amount=0;
         conn = (Connection) request.getServletContext().getAttribute("conn");
         try {
-            pst = conn.prepareStatement("select trans_id from transactions where user_id=? and item_id=?");
+            pst = conn.prepareStatement("select trans_id from transactions where user_id=? and item_id=? and trans_state like 'waiting'");
             pst.setInt(1, user_id);
             pst.setInt(2, item_id);
             rs = pst.executeQuery();
 
             if (rs.next()) {
                 try {
-                    pst = conn.prepareStatement("update transactions set amount=? where user_id=? and item_id=?");
+                    pst = conn.prepareStatement("update transactions set amount=? where user_id=? and item_id=? and trans_state like 'waiting'");
                     pst.setInt(1, amount);
                     pst.setInt(2, user_id);
                     pst.setInt(3, item_id);
@@ -114,9 +116,11 @@ public class BuyServlet extends HttpServlet {
                 user_budget = user_budget - cost;
                 //deleting from cart
                 try {
-                    pst = conn.prepareStatement("delete from transactions where user_id=? and item_id=? ");
-                    pst.setInt(1, user_id);
-                    pst.setInt(2, item_id);
+                    
+                    pst = conn.prepareStatement("update transactions set trans_state='done',trans_date=? where user_id=? and item_id=? and trans_state like 'waiting' ");
+                    pst.setDate(1,Date.valueOf(LocalDate.now()));
+                    pst.setInt(2, user_id);
+                    pst.setInt(3, item_id);
                     pst.execute();
                     
                 
@@ -150,7 +154,7 @@ public class BuyServlet extends HttpServlet {
                 pt.println("<div align=\"center\">"
                         +"<form actiom=\"UserCartServlet\">"
                         + "<h1>Sorry we can't continue the transaction<br>"
-                        + "Your budget is lower than the cost</h1><br>"
+                        + "Your budget is lower than the cost<br>or no avilable amount</h1><br>"
 //                        + "<input type=\"hidden\" name=\"item_id\" value=\""+request.getParameter("item_id")+"\">"
 //                        + "<input type=\"hidden\" name=\"user_id\" value=\""+request.getParameter("user_id")+"\">"
 //                        + "<input type=\"hidden\" name=\"amount\" value=\""+request.getParameter("amount")+"\">"
