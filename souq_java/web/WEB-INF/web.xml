@@ -75,6 +75,15 @@
         <servlet-name>LogOut</servlet-name>
         <url-pattern>/notlogin/LogOut</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Updayeproducts</servlet-name>
+        <servlet-class>com.java.Updayeproducts</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Updayeproducts</servlet-name>
+        <url-pattern>/Updayeproducts</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
