@@ -25,7 +25,7 @@
     ResultSet rs = stmt.executeQuery(search);
 
     out.println("<br>");
-    out.println("<table align='center' border='3'  bordercolor='blueviolet' >"
+    out.println("<table align='center' border='3'color='white'  bordercolor='black' >"
             + "   <tr>\n"
             + "        <th bgcolor='blueviolet'>Product name</th>\n"
             + "        <th bgcolor='blueviolet'>Product price</th>\n"
@@ -36,7 +36,7 @@
             + "   </tr>   ");
     while (rs.next()) {
   //   int id=rs.getInt("item_id");
-        out.println("<tr>");
+        out.println("<tr   text-decoration='white'>");
       //  out.print("<td >" + rs.getInt(1) + "</td>");
         out.print("<td >" + rs.getString(2) + "</td>");
         out.print("<td >" + rs.getString(3) + "</td>");
@@ -74,6 +74,7 @@
         border-spacing:inherit;
         height:50%;
         width: 30% 
+        
     }
     .back{
         align-content: center;
@@ -91,11 +92,15 @@
         height: 50%;
         width:50%;
         size: 30px 40px;
-
+  
+    }
+    body{
+        background-color:#8000ff;
     }
 </style>
+<body>
 <form  name="updateform" id="update" method=" get" action="Updayeproducts">
-    <table class="updatetable" bgcolor="white" bordercolor="blueviolet" align="center">
+    <table class="updatetable" bgcolor="black" bordercolor="blueviolet" align="center">
         <tr>
             <td><p class="p">Enter product name to be updated:</p></td>
             <td><input class="i" type="text" name="name" id="name"  placeholder="Enter product name" ></td>
@@ -133,3 +138,4 @@
 
 
 <a href="adminmanage.jsp"><input class="back" type="submit" value="Back to main menu"/></a>
+</body>

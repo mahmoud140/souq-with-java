@@ -90,6 +90,10 @@
         size: 30px 40px;
 
     }
-</style>
+      body{
+        background-color:#8000ff;
+    }
+</style> 
+<body>
 <a href="adminmanage.jsp"><input class="back" type="submit" value="Back to main menu"/></a>
-
+</body>

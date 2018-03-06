@@ -7,83 +7,103 @@ and open the template in the editor.
 <html>
     <head>
         <title>Souq Header</title>
-<!--        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <!--        <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     </head>
     <body>  
-  <style>
-      
-     
-      input[type=text] {
-    width: 50%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
+        <style>
 
-/*input[type=text]:focus {
-    width: 100%;
-}
-  a {
-  float: left;
-  display: block;
-  color: blueviolet;
-  text-align: center;
-  padding: 20px 30px;
-  text-decoration: aqua;
-  font-size: 30px; 
-} */
-a:hover {
-  color: brown;
-} 
-tr
-{
-    background: aliceblue;
-}
+
+            .inputsearch  {
+                width: 50%;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                background-color: white;
+                background-image: url('searchicon.png');
+                background-position: 10px 10px; 
+                background-repeat: no-repeat;
+                padding: 12px 20px 12px 40px;
+                -webkit-transition: width 0.4s ease-in-out;
+                transition: width 0.4s ease-in-out;
+            }
+
+            /*input[type=text]:focus {
+                width: 100%;
+            }*/
+            a {
+                float: left;
+                display: block;
+                color: blueviolet;
+                text-align: center;
+                padding: 20px 30px;
+                text-decoration: aqua;
+                font-size: 30px; 
+            } 
+            a:hover {
+                color:#ccc;
+            } 
+            tr
+            {
+                background: black;
+            }
 
             #2
-            {
-                
+            { 
+                align-content: center;
+                color:blueviolet;
+
             } 
             #3,#4
             {
-                
+
             }
 
 
-            #7
+            #7,#6,#2
             {
-               text-align: center;
-               padding: 10%;
-               position:absolute;
-               padding-left:20%;
-               padding-right: 10%;
-               align-content:left; 
-               width: 20%
-               
-               
+                text-align: center;
+                padding: 10%;
+                position:absolute;
+                padding-left:20%;
+                padding-right: 10%;
+                align-content:left; 
+                width: 20%;
+                align-content: center;
+                color:blueviolet;
+
+
             }
-            
+            .buttonsearch 
+            { 
+                width: 100px;
+                font-size: 20px;
+                text-align: center;
+                border-radius: 5px;
+                color: blueviolet;
+                border: black;
+                cursor:pointer;
+                background-color: black;
+                border-spacing:inherit;
+                height:100%;
+                background-position:left;
+
+
+            }
+
         </style>
         <table width="100%">
             <tr>
-                <td> <img  id="1" src="/souq_java/souq1.png" alt="logo"  width="200" height="100"> </td>
+                <!--     <td> <img  id="1" src="/souq_java/cartagain.png" alt="logo"  width="200" height="100"> </td>-->
                 <td><a id="2" href="MainForUser" >All Categories</a></td>
-                <td><a href="UserCartServlet"><img  id="3" src="/souq_java/cart.png" alt="cart" height="70" width="100"></a> </td>
-              
+                <td><a href="UserCartServlet"><img  id="3" src="/souq_java/cartagain.png" alt="cart" height="70" width="100"></a> </td>
+
                 <td>
                     <form  id="5" action="SearchServlet">
                         <div align="center">
-                            <input type="text" placeholder="Search to your product" name="search"><br><br>
-                        <input type="submit" value="search">
+                            <input  class="inputsearch" type="text" placeholder="Search to your product" name="search">
+                            <input  class="buttonsearch " type="submit" value="search">
                         </div>
                     </form>  </td>
                 <td><a id="6" href="ProfileServlet">Profile</a></td>

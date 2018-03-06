@@ -8,8 +8,8 @@
 <style>
     #u{
         background-position: center;
-        color: blueviolet;
-        font-size: 20px;
+        color:black;
+        font-size: 25px;
 
     }
     #user,#pass
@@ -33,28 +33,33 @@
         height: 5%; 
         color: blueviolet;
         font-size: 20px;
+    } 
+    body{
+        background-color:#8000ff;
     }
 
 </style>
 
 <jsp:include page="/SouqHeader.html"></jsp:include>
-    <form id="form" action="RForm.jsp">
-        <p id="u">UserName</p>
-        <input id="user" type="text" name="UserName" placeholder="UserName" required>
-        <p id="u">Password</p>
-        <input id="user" type="password" name="Password" placeholder="Password" required>
-        <p id="u">Credit Limit</p>      
-        <input id="user" type="text" name="CreditLimit" placeholder="Credit Limit" required>
-        <p id="u">Job</p>  
-        <input id="user" type="text" name="Job" placeholder="Job">
-        <p id="u">E-mail</p> 
-        <input id="user" type="text" name="E-mail" placeholder="E-mail">
-        <p id="u">Address</p> 
-        <input id="user" type="text" name="Address" placeholder="Address">
-        <p id="u">Birth-Date</p> 
-        <input id="user" type="text" name="BirthDate" placeholder="1994-12-12">
-        <br>
-        <br>
-        <input id="sub" type="submit" value="submit">
-    </form>
+    <body>
+        <form id="form" action="RForm.jsp">
+            <p id="u">UserName</p>
+            <input id="user" type="text" name="UserName" placeholder="UserName" required>
+            <p id="u">Password</p>
+            <input id="user" type="password" name="Password" placeholder="Password" required>
+            <p id="u">Credit Limit</p>      
+            <input id="user" type="text" name="CreditLimit" placeholder="Credit Limit" required>
+            <p id="u">Job</p>  
+            <input id="user" type="text" name="Job" placeholder="Job">
+            <p id="u">E-mail</p> 
+            <input id="user" type="text" name="E-mail" placeholder="E-mail">
+            <p id="u">Address</p> 
+            <input id="user" type="text" name="Address" placeholder="Address">
+            <p id="u">Birth-Date</p> 
+            <input id="user" type="text" name="BirthDate" placeholder="1994-12-12">
+            <br>
+            <br>
+            <input id="sub" type="submit" value="submit">
+        </form>
+    </body>
 <jsp:include page="/SouqFooter.html"></jsp:include>
