@@ -37,7 +37,7 @@
 
 </style>
 
-<jsp:include page="SouqHeader.html"></jsp:include>
+<jsp:include page="/SouqHeader.html"></jsp:include>
     <form id="form" action="RForm.jsp">
         <p id="u">UserName</p>
         <input id="user" type="text" name="UserName" placeholder="UserName" required>
@@ -57,4 +57,4 @@
         <br>
         <input id="sub" type="submit" value="submit">
     </form>
-<jsp:include page="SouqFooter.html"></jsp:include>
+<jsp:include page="/SouqFooter.html"></jsp:include>

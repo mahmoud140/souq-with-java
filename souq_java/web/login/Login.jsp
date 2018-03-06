@@ -22,7 +22,7 @@
     String uname = request.getParameter("UserName");
     String pass = request.getParameter("Password");
     Connection conn = (Connection) request.getServletContext().getAttribute("conn");
-    DBClass select =new DBClass( conn);
+    DBClass select =new DBClass(conn);
     ResultSet rs=select.login(uname, pass);
 //    String query = "select user_name from users";
 //    Statement stmt = conn.createStatement();
@@ -54,11 +54,12 @@
 //                 response.getWriter().println("admin");
                  System.out.println("admin3");
                  request.getSession(true).setAttribute("user_id", id);
-                 response.sendRedirect("adminmanage.jsp");
+                 response.sendRedirect("/souq_java/notlogin/adminmanage.jsp");
              }
              else{
-                 request.getSession(true).setAttribute("user_id", id);;
-                 response.sendRedirect("notlogin/MainForUser");
+                 request.getSession(true).setAttribute("user_id", id);
+                 System.out.println("main");
+                 response.sendRedirect("/souq_java/notlogin/MainForUser");
              }
          }else{
             response.sendRedirect("LoginFail.jsp"); 

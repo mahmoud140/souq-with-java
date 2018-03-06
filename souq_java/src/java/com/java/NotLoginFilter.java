@@ -37,7 +37,7 @@ public class NotLoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         if (session == null) {
-            response.sendRedirect("/souq_java/LoginGUI.jsp");
+            response.sendRedirect("/souq_java/login/LoginGUI.jsp");
         } else {
                 chain.doFilter(req, res);
                 System.out.println("con");

@@ -32,7 +32,7 @@ public class MainForUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          PrintWriter pt = response.getWriter();
-         System.out.println(request.getSession(false).getAttribute("user_id"));
+//         System.out.println(request.getSession(false).getAttribute("user_id"));
         request.getRequestDispatcher("/SouqHeader.html").include(request, response);
         pt.println("<html>\n"
                 + "<body>\n"

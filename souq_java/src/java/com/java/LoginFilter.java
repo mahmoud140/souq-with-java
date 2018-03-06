@@ -33,7 +33,8 @@ public class LoginFilter implements Filter {
         if (session == null) {
             chain.doFilter(req, res);
         } else {
-            response.sendRedirect("notlogin/AlreadyLogin");
+            response.sendRedirect("/souq_java/notlogin/AlreadyLogin");
+//            response.sendRedirect("SouqFooter");
         }
     }
 

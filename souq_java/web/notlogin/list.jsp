@@ -4,11 +4,11 @@
     Author     : sun com
 --%>
 
-<%@page session="false" import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.java.DBClass"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="SouqHeader.html"></jsp:include>
+<jsp:include page="/SouqHeader.html"></jsp:include>
 <%
         Connection conn = (Connection) application.getAttribute("conn");
         DBClass insert = new DBClass(conn);
@@ -63,7 +63,7 @@
        // out.println("</table>");
     %>
     Enter the UserName you want to edit
-    <form action="notlogin/listOfUsers">
+    <form action="listOfUsers">
         <br>UserName
         <input type="text" name="UserName" placeholder="UserName" required>
         <br>Credit Limit
@@ -71,4 +71,4 @@
         <br>
          <input type="submit" value="Enter">
     </form>
-<jsp:include page="SouqFooter.html"></jsp:include>
+<jsp:include page="/SouqFooter.html"></jsp:include>

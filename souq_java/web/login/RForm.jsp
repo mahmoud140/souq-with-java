@@ -29,8 +29,14 @@
 //    stmt.setString(6, job);
 //    stmt.setString(7, email);
 //    stmt.executeUpdate();
-    DBClass insert =new DBClass( conn);
-    insert.rForm(uname, pass, ubudget, job, email, address, birthDate);
+    DBClass dataBase =new DBClass(conn);
+    if(dataBase.vaild(uname))
+    {
+    dataBase.rForm(uname, pass, ubudget, job, email, address, birthDate);
     response.sendRedirect("LoginGUI.jsp");
+    }else
+    {
+        response.sendRedirect("InvalidUname.jsp");
+    }
 %>
 

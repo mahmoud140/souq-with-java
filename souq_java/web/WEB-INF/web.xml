@@ -10,14 +10,15 @@
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/L*</url-pattern>
+        <!--        <url-pattern>/L*</url-pattern>
         <url-pattern>/login.html</url-pattern>
-        <url-pattern>/RForm*</url-pattern>
+        <url-pattern>/RForm*</url-pattern>-->
+        <url-pattern>/login/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>NotLoginFilter</filter-name>
         <url-pattern>/notlogin/*</url-pattern>
-        <url-pattern>/listOfUsers.jsp</url-pattern>
+        <!--<url-pattern>/listOfUsers.jsp</url-pattern>-->
     </filter-mapping>
     <listener>
         <description>ServletContextListener, HttpSessionListener</description>
@@ -75,7 +76,6 @@
         <servlet-name>LogOut</servlet-name>
         <url-pattern>/notlogin/LogOut</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Updayeproducts</servlet-name>
         <servlet-class>com.java.Updayeproducts</servlet-class>
