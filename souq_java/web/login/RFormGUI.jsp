@@ -8,7 +8,7 @@
 <style>
     #u{
         background-position: center;
-        color:black;
+        color:blueviolet;
         font-size: 25px;
 
     }
@@ -35,7 +35,7 @@
         font-size: 20px;
     } 
     body{
-        background-color:#8000ff;
+        background-color:white;
     }
 
 </style>

@@ -26,7 +26,7 @@ public class InitListener implements ServletContextListener, HttpSessionListener
     public void contextInitialized(ServletContextEvent sce) {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
-            Connection conn= DriverManager.getConnection("jdbc:postgresql://localhost:5433/iti_souq", "postgres", "5433");
+            Connection conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/iti_souq", "postgres", "root");
             sce.getServletContext().setAttribute("conn", conn);
         } catch (SQLException ex) {
             Logger.getLogger(InitListener.class.getName()).log(Level.SEVERE, null, ex);

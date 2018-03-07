@@ -24,7 +24,7 @@
     ResultSet rs = stmt.executeQuery(search);
 
     out.println("<br>");
-    out.println("<table align='center' border='3'color='white'  bordercolor='black' >"
+    out.println("<table align='center' border='3'color='white'  bordercolor='blueviolet' >"
             + "   <tr>\n"
             + "        <th bgcolor='blueviolet'>Product name</th>\n"
             + "        <th bgcolor='blueviolet'>Product price</th>\n"
@@ -61,8 +61,8 @@
     }
     .i
     { 
-        height: 200%;
-        width: 100%;
+        height: 70%;
+        width: 90%;
         size: A4;
 
     }
@@ -94,12 +94,12 @@
   
     }
     body{
-        background-color:#8000ff;
+        background-color:white;
     }
 </style>
 <body>
 <form  name="updateform" id="update" method=" get" action="Updayeproducts">
-    <table class="updatetable" bgcolor="black" bordercolor="blueviolet" align="center">
+    <table class="updatetable" bgcolor="white" bordercolor="blueviolet" align="center">
         <tr>
             <td><p class="p">Enter product name to be updated:</p></td>
             <td><input class="i" type="text" name="name" id="name"  placeholder="Enter product name" ></td>

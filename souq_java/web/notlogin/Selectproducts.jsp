@@ -17,7 +17,7 @@
     String price = request.getParameter("price");
     String category = request.getParameter("category");
     String photo = request.getParameter("photo");
-    String amount =request.getParameter("amount");
+    String amount = request.getParameter("amount");
     String Description = request.getParameter("description");
     String search = "select * from items";
     Statement stmt = con.createStatement();
@@ -26,7 +26,7 @@
     out.println("<br>");
     out.println("<table align='center' border='3'  bordercolor='blueviolet' >"
             + "   <tr>\n"
-          //  + "        <th bgcolor='blueviolet'>Product Id</th>\n"
+            //  + "        <th bgcolor='blueviolet'>Product Id</th>\n"
             + "        <th bgcolor='blueviolet'>Product name</th>\n"
             + "        <th bgcolor='blueviolet'>Product price</th>\n"
             + "        <th bgcolor='blueviolet'>Product category</th>\n"
@@ -34,10 +34,10 @@
             + "        <th bgcolor='blueviolet'>Photo</th>\n"
             + "        <th bgcolor='blueviolet'>Product Description</th>\n"
             + "   </tr>   ");
-    while (rs.next()) { 
-     //   int id=rs.getInt("item_id");
+    while (rs.next()) {
+        //   int id=rs.getInt("item_id");
         out.println("<tr>");
-      //  out.print("<td >" + rs.getInt(1) + "</td>");
+        //  out.print("<td >" + rs.getInt(1) + "</td>");
         out.print("<td >" + rs.getString(2) + "</td>");
         out.print("<td >" + rs.getString(3) + "</td>");
         out.print("<td >" + rs.getString(4) + "</td>");
@@ -61,8 +61,8 @@
     }
     .i
     { 
-        height: 200%;
-        width: 100%;
+        height: 70%;
+        width: 90%;
         size: A4;
 
     }
@@ -90,10 +90,10 @@
         size: 30px 40px;
 
     }
-      body{
-        background-color:#8000ff;
+    body{
+        background-color:white;
     }
 </style> 
 <body>
-<a href="adminmanage.jsp"><input class="back" type="submit" value="Back to main menu"/></a>
+    <a href="adminmanage.jsp"><input class="back" type="submit" value="Back to main menu"/></a>
 </body>

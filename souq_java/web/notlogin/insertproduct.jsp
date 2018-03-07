@@ -61,9 +61,8 @@
         font-family: serif;
     }
     .i
-    { 
-        height: 200%;
-        width: 100%;
+    {  height: 70%;
+        width: 90%;
         size: A4;
 
     }
