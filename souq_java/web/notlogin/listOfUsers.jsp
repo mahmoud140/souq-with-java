@@ -8,7 +8,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.java.DBClass"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="SouqAdminHeader.html"></jsp:include>
+<jsp:include page="/SouqAdminHeader.html"></jsp:include>
     <style>
         #customers {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -140,4 +140,4 @@
     <br>
     <input class="sub" type="submit" value="Enter">
 </form>
-<jsp:include page="SouqFooter.html"></jsp:include>
+<jsp:include page="/SouqFooter.html"></jsp:include>

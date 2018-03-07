@@ -21,13 +21,13 @@
     }
 </style>
 <ul class="list">
-    <li><a  class="link" href=""> View All products.</a></li><br>
-    <li><a  class="link" href=""> Add To The List.</a></li><br>
-    <li><a  class="link" href=""> Edit The List.</a></li><br>
-    <li><a  class="link"  href=""> Remove From The List.</a></li> <br>
-    <li><a class="link" href="listOfUsers.jsp">List Of Users.</a></li><br>
-    <li><a class="link" href="/souq_java/notlogin/UserHistory.jsp">User History</a></li><br>
+    <li><a  class="link" href="/souq_java/notlogin/Selectproducts.jsp"><input class="click" type="submit" value="View All Products"/></a></li><br>
+    <li><a  class="link" href="/souq_java/notlogin/insertproduct.jsp"> <input class="click" type="submit" value="Add To The List"/></a></li><br>
+    <li><a  class="link" href="/souq_java/notlogin/Updateproduct.jsp"><input class="click" type="submit" value=" Edit The List"/></a></li><br>
+    <li><a class="link" href="/souq_java/notlogin/listOfUsers.jsp"><input class="click" type="submit" value="List Of Users"/></a></li><br>
+    <li><a class="link" href="/souq_java/notlogin/UserHistory.jsp"><input class="click" type="submit" value="User History"/></a></li><br>
 </ul>
+
   
 
 <jsp:include page="/SouqFooter.html"></jsp:include>

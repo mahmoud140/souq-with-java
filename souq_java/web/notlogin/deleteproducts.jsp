@@ -9,7 +9,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="SouqAdminHeader.html"></jsp:include>
+<jsp:include page="/SouqAdminHeader.html"></jsp:include>
     <style>
         .p{
             color:blueviolet;

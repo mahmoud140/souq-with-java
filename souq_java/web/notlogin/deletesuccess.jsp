@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="SouqAdminHeader.html"></jsp:include> 
+<jsp:include page="/SouqAdminHeader.html"></jsp:include> 
     <style>
 
 
