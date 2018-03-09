@@ -35,6 +35,7 @@
         <li><a  class="link" href="/souq_java/notlogin/Selectproducts.jsp"><input class="click" type="submit" value="View All Products"/></a></li><br>
         <li><a  class="link" href="/souq_java/notlogin/insertproduct.jsp"> <input class="click" type="submit" value="Add To The List"/></a></li><br>
         <li><a  class="link" href="/souq_java/notlogin/Updateproduct.jsp"><input class="click" type="submit" value=" Edit The List"/></a></li><br>
+                <li><a  class="link" href="/souq_java/notlogin/deleteproducts.jsp"><input class="click" type="submit" value=" Delete Product"/></a></li><br>
         <li><a class="link" href="/souq_java/notlogin/listOfUsers.jsp"><input class="click" type="submit" value="List Of Users"/></a></li><br>
         <li><a class="link" href="/souq_java/notlogin/UserHistory.jsp"><input class="click" type="submit" value="User History"/></a></li><br>
     </ul>

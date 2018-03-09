@@ -46,7 +46,7 @@ public class MainForUser extends HttpServlet {
                 + "</body>\n"
                 + "\n"
                 + "</html>");
-      //  request.getRequestDispatcher("/SouqFooter.html").include(request, response);
+        request.getRequestDispatcher("/SouqFooter.html").include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

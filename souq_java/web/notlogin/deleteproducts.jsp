@@ -21,7 +21,7 @@
         .i
         { 
             height: 200%;
-            width: 100%;
+            width: 80%;
             size: A4;
 
         }
