@@ -48,6 +48,10 @@
         <servlet-name>LogOut</servlet-name>
         <servlet-class>com.java.LogOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteUser</servlet-name>
+        <servlet-class>com.java.DeleteUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GenerateDumyCookies</servlet-name>
         <url-pattern>/GenerateDumyCookies</url-pattern>
@@ -83,6 +87,10 @@
     <servlet-mapping>
         <servlet-name>Updayeproducts</servlet-name>
         <url-pattern>/notlogin/Updayeproducts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUser</servlet-name>
+        <url-pattern>/notlogin/DeleteUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

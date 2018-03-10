@@ -156,5 +156,13 @@
     <input class="sub" type="submit" value="Enter">
 </form>
  <a href="/souq_java/notlogin/adminmanage.jsp"> <input class="backbut" type="submit" value="Back to main menu"/></a><br>
+ <br>
+ <form action="/souq_java/notlogin/DeleteUser">
+    <p class="u">UserName:</p>
+    <input  class="user" type="text" name="UserName" placeholder="UserName" required>
+    <br>
+    <br>
+    <input class="sub" type="submit" value="Delete">
+</form>
 <jsp:include page="/SouqFooter.html"></jsp:include>
 

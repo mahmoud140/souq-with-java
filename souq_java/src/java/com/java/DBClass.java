@@ -98,4 +98,11 @@ public class DBClass {
         rs = stmt.executeQuery();
         return rs;
     }
+    
+    public void delete(String uName) throws SQLException {
+        String query = "delete from users where user_name=?";
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setString(1, uName);
+        stmt.executeUpdate();
+    }
 }
