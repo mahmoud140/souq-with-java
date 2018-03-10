@@ -58,7 +58,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Insertproducts</servlet-name>
-        <url-pattern>/Insertproducts</url-pattern>
+        <url-pattern>/notlogin/Insertproducts</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckCookiesEnabled</servlet-name>

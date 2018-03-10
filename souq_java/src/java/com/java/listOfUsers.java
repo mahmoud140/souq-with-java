@@ -39,7 +39,7 @@ public class listOfUsers extends HttpServlet {
         String uName=request.getParameter("UserName");
         int userBudget=(Integer.valueOf(request.getParameter("user_budget")));
         insert.edit(uName,userBudget);
-        response.sendRedirect("/souq_java/listOfUsers.jsp");
+        response.sendRedirect("/souq_java/notlogin/listOfUsers.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

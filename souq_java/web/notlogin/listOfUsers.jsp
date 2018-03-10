@@ -4,8 +4,8 @@
     Author     : Mahmoud
 --%>
 
-<%@page session="false" import="java.sql.Connection"%>
-<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Connection"%>
+<%@page session="false" import="java.sql.ResultSet"%>
 <%@page import="com.java.DBClass"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="/SouqAdminHeader.html"></jsp:include>
@@ -31,8 +31,8 @@
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
-            background-color: blueviolet;
-            color: black;
+            background-color: #4CAF50;
+            color: white;
             text-align: center;
         }
           .u{
@@ -77,6 +77,17 @@
                 color: blueviolet;
                 font-size: 20px;    
            }
+           .backbut
+           { 
+               text-align: center;
+               text-decoration: yellow;
+                background-size: 10px;
+                width: 20%;
+                height: 5%; 
+                color: blueviolet;
+                font-size: 20px;    
+           }
+           
     </style>
 
 <%
@@ -96,6 +107,10 @@
 "   \n" +
 "   </tr>   ");
     while (rs.next()) {
+        String privilage = rs.getString("user_privilege");
+        System.out.println(privilage);
+        if(!privilage.equals("admin"))
+        {
         String uName = rs.getString("user_name");
         String user_password = rs.getString("user_password");
         int user_budget = rs.getInt("user_budget");
@@ -126,12 +141,13 @@
         out.println(email);
         out.println("</td>");
         out.println("</tr>");
+        }
     }
     out.println("<table>"
             + "<br>");
 %>
 <p class="u">Enter the UserName you want to edit</p>
-<form action="souq_java/notlogin/listOfUsers">
+<form action="/souq_java/notlogin/listOfUsers">
     <p class="u">UserName:</p>
     <input  class="user" type="text" name="UserName" placeholder="UserName" required>
     <p class="u">Credit Limit</p>
@@ -140,4 +156,6 @@
     <br>
     <input class="sub" type="submit" value="Enter">
 </form>
+ <a href="/souq_java/notlogin/adminmanage.jsp"> <input class="backbut" type="submit" value="Back to main menu"/></a><br>
 <jsp:include page="/SouqFooter.html"></jsp:include>
+
