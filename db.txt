@@ -6,3 +6,5 @@ create table transactions(trans_id serial,user_id int,item_id int,trans_state te
 alter table transactions add CONSTRAINT fk_1 FOREIGN KEY (user_id)  REFERENCES users (user_id);
 alter table transactions add CONSTRAINT fk_2 FOREIGN KEY (item_id)  REFERENCES items (item_id);
 alter table transactions add column amount int;
+alter table transactions drop CONSTRAINT fk_1;
+alter table transactions add CONSTRAINT fk_1 FOREIGN KEY (user_id)  REFERENCES users (user_id) on delete CASCADE;
