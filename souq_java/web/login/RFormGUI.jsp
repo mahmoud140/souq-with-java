@@ -40,7 +40,7 @@
 
 </style>
 
-<jsp:include page="/SouqHeader.html"></jsp:include>
+<jsp:include page="/SouqUserHeader.html"></jsp:include>
     <body>
         <form id="form" action="RForm.jsp">
             <p id="u">UserName</p>
