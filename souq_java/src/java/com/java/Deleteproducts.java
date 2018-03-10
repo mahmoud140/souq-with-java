@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 
-@WebServlet(name = "Deleteproducts ", urlPatterns = {"/Deleteproducts"})
+@WebServlet(name = "Deleteproducts ", urlPatterns = {"/notlogin/Deleteproducts"})
 public class Deleteproducts extends HttpServlet {
 
     @Override

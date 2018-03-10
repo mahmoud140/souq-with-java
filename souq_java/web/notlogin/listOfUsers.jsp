@@ -96,6 +96,9 @@
 "   \n" +
 "   </tr>   ");
     while (rs.next()) {
+        String privilage = rs.getString(4);
+        if(!privilage.equals("admin"))
+        {
         String uName = rs.getString("user_name");
         String user_password = rs.getString("user_password");
         int user_budget = rs.getInt("user_budget");
@@ -126,6 +129,7 @@
         out.println(email);
         out.println("</td>");
         out.println("</tr>");
+        }
     }
     out.println("<table>"
             + "<br>");

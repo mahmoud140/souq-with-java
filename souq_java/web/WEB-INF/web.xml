@@ -58,7 +58,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Insertproducts</servlet-name>
-        <url-pattern>/Insertproducts</url-pattern>
+        <url-pattern>/notlogin/Insertproducts</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckCookiesEnabled</servlet-name>
@@ -82,7 +82,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Updayeproducts</servlet-name>
-        <url-pattern>/Updayeproducts</url-pattern>
+        <url-pattern>/notlogin/Updayeproducts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
