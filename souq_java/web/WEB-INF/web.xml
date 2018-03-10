@@ -82,7 +82,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Updayeproducts</servlet-name>
-        <url-pattern>/Updayeproducts</url-pattern>
+        <url-pattern>/notlogin/Updayeproducts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

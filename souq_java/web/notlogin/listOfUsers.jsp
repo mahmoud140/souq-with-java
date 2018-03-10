@@ -108,7 +108,6 @@
 "   </tr>   ");
     while (rs.next()) {
         String privilage = rs.getString("user_privilege");
-        System.out.println(privilage);
         if(!privilage.equals("admin"))
         {
         String uName = rs.getString("user_name");
